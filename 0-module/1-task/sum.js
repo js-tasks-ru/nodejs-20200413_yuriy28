@@ -1,15 +1,5 @@
-function sum(...numbers) {
-  let sum = 0;
-
-  numbers.forEach((item) => {
-    if ('number' !== typeof item) {
-      throw new TypeError();
-    }
-
-    sum += item;
-  });
-
-  return sum;
+function sum(a, b) {
+  /* ваш код */
 }
 
 module.exports = sum;
