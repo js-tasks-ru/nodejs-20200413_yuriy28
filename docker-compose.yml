@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  node:
+    user: ${APP_UID}:${APP_GID}
+    image: node:alpine
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      - HOME=/tmp
+    command: sh -c "npm i && npm audit fix"

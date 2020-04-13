@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+cd `dirname $0`
+
+SCRIPT_NAME="scripts/${1/://}.sh"
+
+if ! [[ -f $SCRIPT_NAME ]]; then
+    echo "Script '$1' not found"
+    exit 1
+fi
+
+ARGS=("$@")
+unset ARGS[0]
+
+${SCRIPT_NAME} ${ARGS[@]}
