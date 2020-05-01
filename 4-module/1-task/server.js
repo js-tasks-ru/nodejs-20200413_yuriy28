@@ -1,6 +1,7 @@
 const url = require('url');
 const http = require('http');
 const path = require('path');
+const fs = require('fs');
 
 const server = new http.Server();
 
@@ -11,7 +12,17 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'GET':
-
+      if (pathname.match(/\//)) {
+        res.statusCode = 400;
+        res.end();
+      } else if (!fs.existsSync(filepath)) {
+        res.statusCode = 404;
+        res.end('Not Found');
+      } else {
+        fs.createReadStream(filepath)
+            .pipe(res)
+            .on('end', () => res.end());
+      }
       break;
 
     default:
