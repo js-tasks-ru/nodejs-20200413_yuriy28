@@ -4,9 +4,3 @@ node_modules
 package-lock.json
 
 yarn.lock
-
-.env
-run
-docker-compose.yml
-.docker
-scripts
